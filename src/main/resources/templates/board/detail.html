@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!--ajax쓰려면 꼭 jquery를 import 해야함-->
+</head>
+<body>
+Board detail
+
+<div>
+    id : <input type="text" id="input_id"/> <br/>
+    title : <input type="text" id="input_title"/> <br/>
+    content : <input type="text" id="input_content"/> <br/>
+</div>
+
+<button onclick="detail_board()">조회하기</button>
+<button onclick="update_board()">수정하기</button>
+
+<script>
+    function detail_board(){
+        $.ajax({
+            // ajax : 데이터를 서버에 보내는 용도
+            url: '/api/board/detail/' + $("#input_id").val(),
+            method: 'GET',
+            data : {},
+            dataType : "json",
+            contentType:"application/json",
+            success: function (data, status, xhr) { // 성공 시 alert 띄워줌
+                alert("data :" + JSON.stringify(data));
+                // json을 string으로 바꿔서 표기.
+                let board = data["detail"];
+                // let board = data.detail; 로 해도 됨.
+                $("#input_title").val(board["title"]);
+                $("#input_content").val(board["content"]);
+            },
+            error: function (data, status, err) {
+                alert("error :" + JSON.stringify(data));
+            },
+            complete: function () {
+            }
+        });
+    }
+
+    function update_board(){
+        $.ajax({
+            // ajax : 데이터를 서버에 보내는 용도
+            url: '/api/board/update',
+            method: 'GET',
+            data : { // json 형태
+                id : $("#input_id").val()
+                , title : $("#input_title").val()
+                , content : $("#input_content ").val()
+                // key값, value값
+                // # : id값
+                // $ : jquery를 쓰겠다는 의미
+                // val() : value 값
+            },
+            dataType : "json",
+            contentType:"application/json",
+            success: function (data, status, xhr) { // 성공 시 alert 띄워줌
+                alert("data :" + JSON.stringify(data));
+                // json을 string으로 바꿔서 표기.
+            },
+            error: function (data, status, err) {
+                alert("error :" + JSON.stringify(data));
+            },
+            complete: function () {
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

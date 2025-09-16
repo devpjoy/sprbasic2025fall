@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!--ajax쓰려면 꼭 jquery를 import 해야함-->
+</head>
+<body>
+Board create
+
+<div>
+    title : <input type="text" id="input_title"/> <br/>
+    content : <input type="text" id="input_content"/> <br/>
+
+</div>
+
+<button onclick="create_board()">등록하기</button>
+
+<script>
+    function create_board(){ // 함수. 자바로 치면 메서드
+        $.ajax({
+            // ajax : 데이터를 서버에 보내는 용도
+            // url(/api/board/create) 한테 data(title, content) 정보를 보냄
+            url: '/api/board/create',
+            method: 'GET',
+            data : { // json 형태
+                title : $("#input_title").val()
+                // key값, value값 (여기서 key는 title, value는 input_title의 value
+                // # : id값
+                // ("#input_title").val() : input_title라는 아이디를 가진 value 값에 접근
+                // $ : jquery를 쓰겠다는 의미
+                // val() : value 값
+                , content : $("#input_content").val()
+            },
+            dataType : "json",
+            contentType:"application/json",
+            success: function (data, status, xhr) { // 성공 시 alert 띄워줌
+                alert("data :" + JSON.stringify(data));
+                // 서버에서 보낸 데이터 전체를 보고 싶어.
+                // json을 string으로 바꿔서 표기.
+            },
+            error: function (data, status, err) {
+                // 우리가 잘못하지 않아도 가끔 네트워크 오류로 인해 error 되는 경우 있음
+                alert("error :" + JSON.stringify(data));
+            },
+            complete: function () {
+                // complete : error가 나든, success가 나든 상관없이 요청이 끝나면 무조건 실행되는 부분
+                // 사실 크게 실행할 일은 없음
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
