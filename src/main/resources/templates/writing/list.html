@@ -5,7 +5,6 @@
     <title>Writing List</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <!--남이 개발해놓은 코드를 jquery로 사용-->
 </head>
 <body>
 
@@ -20,14 +19,14 @@ List!!
     function list_writing() {
         alert("등록이 시작됩니다!");
         $.ajax({
-            url: '/api/writing/list', // requestmapping에서 정의한 주소
+            url: '/api/writing/list', // RequestMapping에서 정의한 주소
             method: 'GET',
             data : {},
             dataType : "json",
             contentType:"application/json",
             success: function (data, status, xhr) { // 성공 시 alert 띄워줌
                 alert("data :" + JSON.stringify(data));
-                // 서버에서 보낸 데이터 전체를 보고 싶어.
+                // 서버에서 보낸 데이터 전체를 확인.
                 // json을 string으로 바꿔서 표기.
                 let list = data["data"];
                 for(let each of list){
@@ -37,6 +36,7 @@ List!!
 
                     $("#div_list").append( //html 코드를 덧붙일 때 append 사용
                         // "<div>"+title+"</div>"
+                        // opt + ~ 누르면 `` 나옴.
                         `<div onclick="location.href='/writing/detatil/${id}">${title} // ${content}</div>`
                     )
                 }

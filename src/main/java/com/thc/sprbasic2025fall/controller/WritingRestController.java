@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// 교수님께서는 중요한 어노테이션을 controller과 더 가깝게 두심
+// 교수님께서는 중요한 어노테이션을 controller과 더 가깝게 두심 !
 @RequestMapping("/api/writing")
 @RestController
 public class WritingRestController {
@@ -18,7 +18,9 @@ public class WritingRestController {
     List<Map<String, Object>> list = new ArrayList<>();
     int order = 0;
 
+    // create
     @GetMapping("/create")
+    // GET 방식으로 RequestMapping 하는 GetMapping
     public Map<String, Object> create(@RequestParam Map<String, Object> params) {
         String title = (String) params.get("title");
         String content = (String) params.get("content");
@@ -38,6 +40,7 @@ public class WritingRestController {
         return map_return;
     }
 
+    // list
     @GetMapping("/list")
     public Map<String, Object> list() {
         Map<String, Object> map_return = new HashMap<>();
@@ -57,6 +60,7 @@ public class WritingRestController {
         return map_writing;
     }
 
+    // detail
     @GetMapping("/detail")
     public Map<String, Object> detail(int id) {
         Map<String, Object> map_return = new HashMap<>();

@@ -5,7 +5,7 @@
     <title>Writing Create</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <!--남이 개발해놓은 코드를 jquery로 사용-->
+    <!--누군가가 개발해놓은 코드를 편리하게 jquery로 사용 : ajax를 사용하려면 jquery 필요 !-->
 </head>
 <body>
 
@@ -21,7 +21,7 @@ Create!!
     function create_writing() {
         alert("등록이 시작됩니다!");
         $.ajax({
-            url: '/api/writing/create', // requestmapping에서 정의한 주소
+            url: '/api/writing/create', // RequestMapping에서 정의한 주소
             method: 'GET',
             data : { // json 형태
                 title : $("#input_title").val()
@@ -31,7 +31,7 @@ Create!!
             contentType:"application/json",
             success: function (data, status, xhr) { // 성공 시 alert 띄워줌
                 alert("data :" + JSON.stringify(data));
-                // 서버에서 보낸 데이터 전체를 보고 싶어.
+                // 서버에서 보낸 데이터 전체를 확인.
                 // json을 string으로 바꿔서 표기.
             },
             error: function (data, status, err) {

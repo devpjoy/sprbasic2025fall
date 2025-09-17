@@ -5,7 +5,6 @@
     <title>Writing Detail</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <!--남이 개발해놓은 코드를 jquery로 사용-->
 </head>
 <body>
 
@@ -18,12 +17,13 @@ Detail!!
 </div>
 
 <!--<button onclick="detail_writing()">등록하기</button>-->
+
 <script>
     let tempHref = location.href; // 현재 내가 접속한 주소값!
     // alert(tempHref);
 
-    let tempOrder = tempHref.lastIndexOf("/"); // 마지막으로 나오는 /
-    let tempId = tempHref.substring(tempOrder + 1); // '/' 다음으로 오는 값(Id)을 substring으로 잘라서 가져오기 위함
+    let tempOrder = tempHref.lastIndexOf("/"); // 마지막으로 나오는 "/"
+    let tempId = tempHref.substring(tempOrder + 1); // "/" 다음으로 오는 값(Id)을 substring으로 잘라서 가져오기 위함
     // alert(tempId);
 
     let tempOrder2 = tempId.indexOf("?") // 가장 먼저나오는 ?가 어딨는지
