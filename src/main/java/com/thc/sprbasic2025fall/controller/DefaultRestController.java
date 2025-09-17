@@ -1,4 +1,4 @@
-package com.thc.sprbasic2025fall;
+package com.thc.sprbasic2025fall.controller;
 
 import com.thc.sprbasic2025fall.dto.MultipleBasket;
 import org.springframework.web.bind.annotation.RequestMapping;

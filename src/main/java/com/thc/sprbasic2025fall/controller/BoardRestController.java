@@ -1,4 +1,4 @@
-package com.thc.sprbasic2025fall;
+package com.thc.sprbasic2025fall.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
