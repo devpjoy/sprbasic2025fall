@@ -1,4 +1,4 @@
-package com.thc.sprbasic2025fall.controller.page;
+package com.thc.sprbasic2025fall;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

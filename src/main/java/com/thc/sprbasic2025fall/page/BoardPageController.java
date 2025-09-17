@@ -1,14 +1,8 @@
-package com.thc.sprbasic2025fall;
+package com.thc.sprbasic2025fall.page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/board")
 @Controller
