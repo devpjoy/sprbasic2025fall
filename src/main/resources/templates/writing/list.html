@@ -15,16 +15,23 @@ List!!
 </div>
 
 <button onclick="list_writing()">목록 조회</button>
+
 <script>
     function list_writing() {
         // alert("등록이 시작됩니다!");
         $.ajax({
+            // ajax : html의 front의 data를 server로 보냄. 돌려받는 건 항상 객체 (controller가 return 하는 객체)
+            // server로 보내려면 requestMapping을 통해 주소를 메서드에 선언해야 한다.
             url: '/api/writing/list', // RequestMapping에서 정의한 주소
+            // url : 호출하는 주소
+            // 이 url 주소를 가진 controller이 실행 됨.
             method: 'GET',
+            // method : 호출하는 방식
             data : {},
+            // data : 보내고 싶은 데이터
             dataType : "json",
             contentType:"application/json",
-            success: function (data, status, xhr) { // 성공 시 alert 띄워줌
+            success: function (data, status, xhr) { // 성공 시 function 함수 실행. (alert 띄워줌)
                 alert("data :" + JSON.stringify(data));
                 // 서버에서 보낸 데이터 전체를 확인.
                 // json을 string으로 바꿔서 표기.
