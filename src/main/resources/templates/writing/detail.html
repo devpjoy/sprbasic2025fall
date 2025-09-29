@@ -45,9 +45,8 @@ Detail!!
 
 
     function detail_writing() {
-        // alert("등록이 시작됩니다!");
         $.ajax({
-            url: '/api/writing/detail', // requestmapping에서 정의한 주소
+            url: '/api/writing', // requestmapping에서 정의한 주소
             method: 'GET',
             data : { // json 형태
                 id : tempId
@@ -79,15 +78,14 @@ Detail!!
     function update_writing() {
         // alert("등록이 시작됩니다!");
         $.ajax({
-            url: '/api/writing/update', // requestmapping에서 정의한 주소
-            method: 'GET',
-            data : { // json 형태
+            url: '/api/writing', // requestmapping에서 정의한 주소
+            method: 'PUT',
+            contentType:"application/json",
+            data : JSON.stringify({ // json 형태
                 id : $("#input_id").val()
                 , title : $("#input_title").val()
                 , content : $("#input_content").val()
-            },
-            // dataType : "json",
-            // contentType:"application/json",
+            }),
             success: function (data, status, xhr) {
             },
             error: function (data, status, err) {
@@ -104,13 +102,12 @@ Detail!!
     function delete_writing() {
         // alert("등록이 시작됩니다!");
         $.ajax({
-            url: '/api/writing/delete', // requestmapping에서 정의한 주소
-            method: 'GET',
-            data : { // json 형태
+            url: '/api/writing', // requestmapping에서 정의한 주소
+            method: 'DELETE',
+            contentType:"application/json",
+            data : JSON.stringify({ // json 형태
                 id : $("#input_id").val()
-            },
-            // dataType : "json",
-            // contentType:"application/json",
+            }),
             success: function (data, status, xhr) {
             },
             error: function (data, status, err) {

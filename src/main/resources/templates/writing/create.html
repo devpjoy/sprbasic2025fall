@@ -21,13 +21,17 @@ Create!!
     function create_writing() {
         alert("등록이 시작됩니다!");
         $.ajax({
-            url: '/api/writing/create', // RequestMapping에서 정의한 주소
-            method: 'GET',
-            data : { // json 형태
+            url: '/api/writing', // RequestMapping에서 정의한 주소
+            method: 'POST',
+            // data : { // json 형태
+            //     title : $("#input_title").val()
+            //     , content : $("#input_content").val()
+            // },
+            data : JSON.stringify({ // json 형태
                 title : $("#input_title").val()
                 , content : $("#input_content").val()
-            },
-            dataType : "json",
+            }),
+            // dataType : "json",
             contentType:"application/json",
             success: function (data, status, xhr) { // 성공 시 alert 띄워줌
                 alert("data :" + JSON.stringify(data));
